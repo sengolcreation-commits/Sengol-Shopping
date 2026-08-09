@@ -1,243 +1,1423 @@
  <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Sengol Shopping — Admin Panel</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="style.css">
+<title>Sengol Shopping — Admin Dashboard</title>
 
-    <style>
-        .admin-page {
-            min-height: 100vh;
-            background: #f5f5f5;
-            padding: 50px 0;
-        }
+<link rel="stylesheet" href="style.css">
 
-        .admin-box {
-            max-width: 700px;
-            margin: auto;
-            background: #ffffff;
-            padding: 35px;
-            border-radius: 16px;
-            border: 1px solid #e5e5e5;
-        }
+<style>
 
-        .admin-box h1 {
-            margin-bottom: 8px;
-        }
+*{
+    box-sizing:border-box;
+}
 
-        .admin-box > p {
-            color: #777;
-            margin-bottom: 30px;
-        }
+body{
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f4f6fb;
+    color:#17171c;
+}
 
-        .form-group {
-            margin-bottom: 20px;
-        }
+.admin-header{
+    background:#111118;
+    color:white;
+    padding:18px 0;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
 
-        .form-group label {
-            display: block;
-            margin-bottom: 7px;
-            font-weight: 700;
-            font-size: 14px;
-        }
+.admin-nav{
+    width:92%;
+    max-width:1250px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+}
 
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 13px;
-            border: 1px solid #d5d5d5;
-            border-radius: 8px;
-            font-family: inherit;
-            font-size: 14px;
-        }
+.admin-brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-weight:900;
+}
 
-        .form-group textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
+.admin-brand img{
+    width:145px;
+    max-height:50px;
+    object-fit:contain;
+}
 
-        .admin-actions {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-top: 25px;
-        }
+.admin-nav-links{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
 
-        .back-link {
-            display: inline-block;
-            margin-bottom: 25px;
-            font-weight: 700;
-        }
+.admin-nav-links a{
+    color:white;
+    text-decoration:none;
+    padding:9px 14px;
+    border-radius:8px;
+    background:#24242d;
+    font-size:13px;
+}
 
-        .notice {
-            margin-top: 25px;
-            padding: 15px;
-            border-radius: 8px;
-            background: #f1f1f1;
-            color: #555;
-            font-size: 13px;
-        }
-    </style>
+.admin-page{
+    padding:45px 0 80px;
+}
+
+.admin-container{
+    width:92%;
+    max-width:1250px;
+    margin:auto;
+}
+
+.admin-title{
+    margin-bottom:30px;
+}
+
+.admin-title h1{
+    font-size:38px;
+    margin:5px 0;
+}
+
+.admin-title p{
+    color:#70717c;
+}
+
+/* STATS */
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+    margin-bottom:30px;
+}
+
+.stat-card{
+    background:white;
+    border:1px solid #e4e5ec;
+    border-radius:16px;
+    padding:24px;
+    box-shadow:0 8px 25px rgba(0,0,0,.04);
+}
+
+.stat-card span{
+    color:#747581;
+    font-size:13px;
+}
+
+.stat-card strong{
+    display:block;
+    font-size:30px;
+    margin-top:8px;
+}
+
+/* MAIN GRID */
+
+.dashboard-grid{
+    display:grid;
+    grid-template-columns:420px 1fr;
+    gap:25px;
+    align-items:start;
+}
+
+.admin-box{
+    background:white;
+    border:1px solid #e3e4eb;
+    border-radius:18px;
+    padding:28px;
+    box-shadow:0 8px 25px rgba(0,0,0,.04);
+}
+
+.admin-box h2{
+    margin-top:0;
+    margin-bottom:20px;
+}
+
+.form-group{
+    margin-bottom:17px;
+}
+
+.form-group label{
+    display:block;
+    font-size:13px;
+    font-weight:800;
+    margin-bottom:7px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+    width:100%;
+    padding:12px;
+    border:1px solid #d7d8df;
+    border-radius:9px;
+    font-family:inherit;
+    outline:none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus{
+    border-color:#6c3cff;
+}
+
+.form-group textarea{
+    min-height:100px;
+    resize:vertical;
+}
+
+.form-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.checkbox-row{
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+    margin:15px 0;
+}
+
+.checkbox-row label{
+    display:flex;
+    gap:7px;
+    align-items:center;
+    font-size:13px;
+    font-weight:700;
+}
+
+.preview{
+    display:none;
+    margin-top:12px;
+    border-radius:10px;
+    overflow:hidden;
+    border:1px solid #ddd;
+}
+
+.preview img{
+    width:100%;
+    max-height:200px;
+    object-fit:cover;
+    display:block;
+}
+
+.admin-actions{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:20px;
+}
+
+.admin-btn{
+    border:0;
+    cursor:pointer;
+    padding:12px 18px;
+    border-radius:9px;
+    font-weight:800;
+}
+
+.add-btn{
+    background:linear-gradient(135deg,#6c3cff,#ff3d81);
+    color:white;
+}
+
+.clear-btn{
+    background:#ececf1;
+    color:#333;
+}
+
+.cancel-btn{
+    background:#fff0f0;
+    color:#c62828;
+    display:none;
+}
+
+/* PRODUCT LIST */
+
+.product-toolbar{
+    display:flex;
+    gap:10px;
+    margin-bottom:20px;
+}
+
+.product-toolbar input{
+    flex:1;
+    padding:12px;
+    border:1px solid #ddd;
+    border-radius:9px;
+}
+
+.product-list{
+    display:grid;
+    gap:12px;
+}
+
+.product-item{
+    display:grid;
+    grid-template-columns:85px 1fr auto;
+    gap:15px;
+    align-items:center;
+    padding:15px;
+    border:1px solid #e5e5eb;
+    border-radius:13px;
+    background:#fafaff;
+}
+
+.product-item img{
+    width:85px;
+    height:70px;
+    border-radius:9px;
+    object-fit:cover;
+    background:#eee;
+}
+
+.product-item h3{
+    margin:0 0 4px;
+    font-size:16px;
+}
+
+.product-item p{
+    margin:2px 0;
+    color:#777;
+    font-size:12px;
+}
+
+.product-actions{
+    display:flex;
+    gap:7px;
+    flex-wrap:wrap;
+}
+
+.small-btn{
+    border:0;
+    cursor:pointer;
+    padding:8px 11px;
+    border-radius:7px;
+    font-size:12px;
+    font-weight:800;
+}
+
+.edit-btn{
+    background:#e9e2ff;
+    color:#5a2ed0;
+}
+
+.delete-btn{
+    background:#ffe4e4;
+    color:#c62828;
+}
+
+.empty{
+    padding:40px;
+    text-align:center;
+    color:#777;
+    border:1px dashed #ccc;
+    border-radius:12px;
+}
+
+/* NOTICE */
+
+.notice{
+    margin-top:25px;
+    padding:15px;
+    border-radius:10px;
+    background:#fff8df;
+    border:1px solid #f0df9b;
+    color:#735b00;
+    font-size:13px;
+}
+
+/* MOBILE */
+
+@media(max-width:950px){
+
+    .stats-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .dashboard-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .admin-nav{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .stats-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .form-row{
+        grid-template-columns:1fr;
+    }
+
+    .product-item{
+        grid-template-columns:70px 1fr;
+    }
+
+    .product-item img{
+        width:70px;
+        height:60px;
+    }
+
+    .product-actions{
+        grid-column:1/-1;
+    }
+
+}
+
+</style>
+
 </head>
+
 
 <body>
 
-    <section class="admin-page">
 
-        <div class="container">
+<!-- HEADER -->
 
-            <a href="index.html" class="back-link">
-                ← Back to Sengol Shopping
-            </a>
+<header class="admin-header">
 
-            <div class="admin-box">
+<div class="admin-nav">
 
-                <p class="section-label">SENGOL SHOPPING</p>
+<div class="admin-brand">
 
-                <h1>Admin Panel</h1>
+<img src="Logo.png" alt="Sengol Shopping">
+
+<span>ADMIN</span>
+
+</div>
+
+
+<div class="admin-nav-links">
+
+<a href="index.html">
+View Website
+</a>
+
+<a href="admin.html">
+Dashboard
+</a>
+
+</div>
+
+</div>
+
+</header>
+
+
+<!-- MAIN -->
+
+<main class="admin-page">
+
+<div class="admin-container">
+
+
+<!-- TITLE -->
+
+<div class="admin-title">
+
+<p class="section-label">
+SENGOL SHOPPING
+</p>
+
+<h1>
+Admin Dashboard
+</h1>
+
+<p>
+Manage your Sengol Shopping products from one place.
+</p>
+
+</div>
+
+
+<!-- STATS -->
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<span>
+Total Products
+</span>
+
+<strong id="totalProducts">
+0
+</strong>
+
+</div>
+
+
+<div class="stat-card">
+
+<span>
+Fashion
+</span>
+
+<strong id="fashionCount">
+0
+</strong>
+
+</div>
+
+
+<div class="stat-card">
+
+<span>
+Electronics
+</span>
+
+<strong id="electronicsCount">
+0
+</strong>
+
+</div>
+
+
+<div class="stat-card">
+
+<span>
+Featured
+</span>
+
+<strong id="featuredCount">
+0
+</strong>
+
+</div>
+
+</div>
+
+
+<!-- DASHBOARD -->
+
+<div class="dashboard-grid">
+
+
+<!-- ADD PRODUCT -->
+
+<div class="admin-box">
+
+<h2 id="formTitle">
+Add Product
+</h2>
+
+
+<form id="productForm">
+
+
+<div class="form-group">
+
+<label for="productName">
+Product Name
+</label>
+
+<input
+type="text"
+id="productName"
+placeholder="Enter product name"
+required
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label for="productCategory">
+Category
+</label>
+
+<select id="productCategory" required>
+
+<option value="">
+Select Category
+</option>
+
+<option value="Fashion">
+Sengol Fashion
+</option>
+
+<option value="Electronics">
+Sengol Electronics
+</option>
+
+<option value="Home Decor">
+Sengol Home Decor
+</option>
+
+<option value="Other">
+Sengol Other
+</option>
+
+</select>
+
+</div>
+
+
+<div class="form-row">
+
+
+<div class="form-group">
+
+<label for="productPrice">
+Price
+</label>
+
+<input
+type="number"
+id="productPrice"
+placeholder="999"
+min="0"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label for="productDiscount">
+Discount
+</label>
+
+<input
+type="text"
+id="productDiscount"
+placeholder="20% OFF"
+>
+
+</div>
+
+</div>
+
+
+<div class="form-group">
+
+<label for="productImage">
+Product Image URL
+</label>
+
+<input
+type="url"
+id="productImage"
+placeholder="https://example.com/image.jpg"
+>
+
+<div class="preview" id="imagePreview">
+
+<img id="previewImage" alt="Product Preview">
+
+</div>
+
+</div>
+
+
+<div class="form-group">
+
+<label for="productDescription">
+Description
+</label>
+
+<textarea
+id="productDescription"
+placeholder="Enter product description"
+required
+></textarea>
+
+</div>
+
+
+<div class="form-group">
+
+<label for="affiliateLink">
+Affiliate / Product Link
+</label>
+
+<input
+type="url"
+id="affiliateLink"
+placeholder="https://example.com/product"
+required
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label for="productRating">
+Rating
+</label>
+
+<select id="productRating">
+
+<option value="5">
+5.0
+</option>
+
+<option value="4.5">
+4.5
+</option>
+
+<option value="4">
+4.0
+</option>
+
+<option value="3.5">
+3.5
+</option>
+
+<option value="3">
+3.0
+</option>
+
+</select>
+
+</div>
+
+
+<div class="checkbox-row">
+
+<label>
+
+<input
+type="checkbox"
+id="isTrending"
+>
+
+Trending
+
+</label>
+
+
+<label>
+
+<input
+type="checkbox"
+id="isFeatured"
+>
+
+Featured
+
+</label>
+
+</div>
+
+
+<div class="admin-actions">
+
+<button
+type="submit"
+class="admin-btn add-btn"
+id="submitBtn"
+>
+Add Product
+</button>
+
+
+<button
+type="button"
+class="admin-btn clear-btn"
+id="clearBtn"
+>
+Clear
+</button>
+
+
+<button
+type="button"
+class="admin-btn cancel-btn"
+id="cancelBtn"
+>
+Cancel Edit
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+
+<!-- PRODUCT MANAGEMENT -->
+
+<div class="admin-box">
+
+<h2>
+Product Management
+</h2>
+
+
+<div class="product-toolbar">
+
+<input
+type="search"
+id="searchProducts"
+placeholder="Search products..."
+>
+
+</div>
+
+
+<div
+class="product-list"
+id="productList">
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="notice">
+
+<strong>Development note:</strong>
+
+This dashboard currently stores products in the browser's
+LocalStorage. It is useful for testing and development, but it
+is not a secure production database.
+
+For a real public admin system, the next stage should use a
+secure backend, authentication and database.
+
+</div>
+
+
+</div>
+
+</main>
+
+
+<script>
+
+/* =========================================================
+   SENGOL SHOPPING ADMIN DASHBOARD
+========================================================= */
+
+
+/* STORAGE KEY */
+
+const STORAGE_KEY = "sengolShoppingProducts";
+
+
+/* ELEMENTS */
+
+const productForm =
+document.getElementById("productForm");
+
+const productName =
+document.getElementById("productName");
+
+const productCategory =
+document.getElementById("productCategory");
+
+const productPrice =
+document.getElementById("productPrice");
+
+const productDiscount =
+document.getElementById("productDiscount");
+
+const productImage =
+document.getElementById("productImage");
+
+const productDescription =
+document.getElementById("productDescription");
+
+const affiliateLink =
+document.getElementById("affiliateLink");
+
+const productRating =
+document.getElementById("productRating");
+
+const isTrending =
+document.getElementById("isTrending");
+
+const isFeatured =
+document.getElementById("isFeatured");
+
+const productList =
+document.getElementById("productList");
+
+const searchProducts =
+document.getElementById("searchProducts");
+
+const clearBtn =
+document.getElementById("clearBtn");
+
+const cancelBtn =
+document.getElementById("cancelBtn");
+
+const submitBtn =
+document.getElementById("submitBtn");
+
+const formTitle =
+document.getElementById("formTitle");
+
+const imagePreview =
+document.getElementById("imagePreview");
+
+const previewImage =
+document.getElementById("previewImage");
+
+
+let editId = null;
+
+
+/* =========================================================
+   GET PRODUCTS
+========================================================= */
+
+function getProducts(){
+
+    try{
+
+        return JSON.parse(
+            localStorage.getItem(STORAGE_KEY)
+        ) || [];
+
+    }catch(error){
+
+        return [];
+
+    }
+
+}
+
+
+/* =========================================================
+   SAVE PRODUCTS
+========================================================= */
+
+function saveProducts(products){
+
+    localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(products)
+    );
+
+}
+
+
+/* =========================================================
+   FORM RESET
+========================================================= */
+
+function resetForm(){
+
+    productForm.reset();
+
+    editId = null;
+
+    formTitle.textContent =
+    "Add Product";
+
+    submitBtn.textContent =
+    "Add Product";
+
+    cancelBtn.style.display =
+    "none";
+
+    imagePreview.style.display =
+    "none";
+
+}
+
+
+/* =========================================================
+   IMAGE PREVIEW
+========================================================= */
+
+productImage.addEventListener(
+"input",
+function(){
+
+    const url =
+    productImage.value.trim();
+
+    if(!url){
+
+        imagePreview.style.display =
+        "none";
+
+        return;
+
+    }
+
+    previewImage.src = url;
+
+    imagePreview.style.display =
+    "block";
+
+});
+
+
+/* =========================================================
+   ADD / UPDATE PRODUCT
+========================================================= */
+
+productForm.addEventListener(
+"submit",
+function(event){
+
+    event.preventDefault();
+
+
+    const products =
+    getProducts();
+
+
+    const product = {
+
+        id:
+        editId ||
+        Date.now().toString(),
+
+        name:
+        productName.value.trim(),
+
+        category:
+        productCategory.value,
+
+        price:
+        productPrice.value,
+
+        discount:
+        productDiscount.value.trim(),
+
+        image:
+        productImage.value.trim(),
+
+        description:
+        productDescription.value.trim(),
+
+        link:
+        affiliateLink.value.trim(),
+
+        rating:
+        productRating.value,
+
+        trending:
+        isTrending.checked,
+
+        featured:
+        isFeatured.checked,
+
+        updatedAt:
+        new Date().toISOString()
+
+    };
+
+
+    if(editId){
+
+        const index =
+        products.findIndex(
+            item => item.id === editId
+        );
+
+        if(index !== -1){
+
+            products[index] =
+            product;
+
+        }
+
+        alert(
+        "Product updated successfully."
+        );
+
+    }else{
+
+        products.unshift(product);
+
+        alert(
+        "Product added successfully."
+        );
+
+    }
+
+
+    saveProducts(products);
+
+    resetForm();
+
+    renderProducts();
+
+    updateStats();
+
+});
+
+
+/* =========================================================
+   RENDER PRODUCTS
+========================================================= */
+
+function renderProducts(){
+
+    const products =
+    getProducts();
+
+    const query =
+    searchProducts.value
+    .toLowerCase()
+    .trim();
+
+
+    const filtered =
+    products.filter(function(product){
+
+        return (
+
+            product.name
+            .toLowerCase()
+            .includes(query)
+
+            ||
+
+            product.category
+            .toLowerCase()
+            .includes(query)
+
+        );
+
+    });
+
+
+    if(filtered.length === 0){
+
+        productList.innerHTML = `
+
+        <div class="empty">
+
+            No products found.
+
+        </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    productList.innerHTML =
+    filtered.map(function(product){
+
+        const image =
+        product.image ||
+        "https://via.placeholder.com/300x200?text=Sengol+Shopping";
+
+
+        return `
+
+        <div class="product-item">
+
+            <img
+                src="${escapeHTML(image)}"
+                alt="${escapeHTML(product.name)}"
+                onerror="this.src='https://via.placeholder.com/300x200?text=Sengol+Shopping'"
+            >
+
+
+            <div>
+
+                <h3>
+                    ${escapeHTML(product.name)}
+                </h3>
 
                 <p>
-                    Add a new product to your Sengol Shopping catalogue.
+                    ${escapeHTML(product.category)}
                 </p>
 
-                <form id="productForm">
+                <p>
+                    Price:
+                    ${product.price ? "₹" + escapeHTML(product.price) : "Not set"}
+                </p>
 
-                    <div class="form-group">
-                        <label for="productName">Product Name</label>
+                <p>
+                    Rating:
+                    ${escapeHTML(product.rating || "5")}
+                </p>
 
-                        <input
-                            type="text"
-                            id="productName"
-                            placeholder="Enter product name"
-                            required
-                        >
-                    </div>
+                <p>
 
+                    ${product.trending ? "Trending • " : ""}
+                    ${product.featured ? "Featured" : ""}
 
-                    <div class="form-group">
-                        <label for="productCategory">Category</label>
+                </p>
 
-                        <select id="productCategory" required>
-
-                            <option value="">
-                                Select Category
-                            </option>
-
-                            <option value="Fashion">
-                                Sengol Fashion
-                            </option>
-
-                            <option value="Electronics">
-                                Sengol Electronics
-                            </option>
-
-                            <option value="Home Decor">
-                                Sengol Home Decor
-                            </option>
-
-                            <option value="Other">
-                                Sengol Other
-                            </option>
-
-                        </select>
-                    </div>
+            </div>
 
 
-                    <div class="form-group">
-                        <label for="productImage">
-                            Product Image URL
-                        </label>
+            <div class="product-actions">
 
-                        <input
-                            type="url"
-                            id="productImage"
-                            placeholder="https://example.com/image.jpg"
-                        >
-                    </div>
+                <button
+                    class="small-btn edit-btn"
+                    onclick="editProduct('${product.id}')"
+                >
+                    Edit
+                </button>
 
 
-                    <div class="form-group">
-                        <label for="productDescription">
-                            Product Description
-                        </label>
-
-                        <textarea
-                            id="productDescription"
-                            placeholder="Enter product description"
-                            required
-                        ></textarea>
-                    </div>
-
-
-                    <div class="form-group">
-                        <label for="affiliateLink">
-                            Affiliate / Product Link
-                        </label>
-
-                        <input
-                            type="url"
-                            id="affiliateLink"
-                            placeholder="https://example.com/product"
-                            required
-                        >
-                    </div>
-
-
-                    <div class="admin-actions">
-
-                        <button
-                            type="submit"
-                            class="btn primary-btn"
-                        >
-                            Add Product
-                        </button>
-
-                        <button
-                            type="reset"
-                            class="btn secondary-btn"
-                        >
-                            Clear
-                        </button>
-
-                    </div>
-
-                </form>
-
-
-                <div class="notice">
-                    ⚠️ Current version is a frontend admin interface.
-                    Products are not yet connected to a permanent database.
-                    Database and authentication will be added in the next
-                    development stage.
-                </div>
+                <button
+                    class="small-btn delete-btn"
+                    onclick="deleteProduct('${product.id}')"
+                >
+                    Delete
+                </button>
 
             </div>
 
         </div>
 
-    </section>
+        `;
+
+    }).join("");
+
+}
 
 
-    <script>
+/* =========================================================
+   EDIT PRODUCT
+========================================================= */
 
-        const productForm =
-            document.getElementById("productForm");
+function editProduct(id){
 
-        productForm.addEventListener("submit", function(event) {
+    const products =
+    getProducts();
 
-            event.preventDefault();
+    const product =
+    products.find(
+        item => item.id === id
+    );
 
-            alert(
-                "Product form submitted! Database connection will be added in the next stage."
-            );
+    if(!product){
 
-        });
+        return;
 
-    </script>
+    }
 
-</body>
-</html>
+
+    productName.value =
+    product.name || "";
+
+    productCategory.value =
+    product.category || "";
+
+    productPrice.value =
+    product.price || "";
+
+    productDiscount.value =
+    product.discount || "";
+
+    productImage.value =
+    product.image || "";
+
+    productDescription.value =
+    product.description || "";
+
+    affiliateLink.value =
+    product.link || "";
+
+    productRating.value =
+    product.rating || "5";
+
+    isTrending.checked =
+    Boolean(product.trending);
+
+    isFeatured.checked =
+    Boolean(product.featured);
+
+
+    editId =
+    product.id;
+
+
+    formTitle.textContent =
+    "Edit Product";
+
+    submitBtn.textContent =
+    "Update Product";
+
+    cancelBtn.style.display =
+    "inline-block";
+
+
+    if(product.image){
+
+        previewImage.src =
+        product.image;
+
+        imagePreview.style.display =
+        "block";
+
+    }
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================================================
+   DELETE PRODUCT
+========================================================= */
+
+function deleteProduct(id){
+
+    const confirmDelete =
+    confirm(
+        "Are you sure you want to delete this product?"
+    );
+
+
+    if(!confirmDelete){
+
+        return;
+
+    }
+
+
+    const products =
+    getProducts();
+
+
+    const updated =
+    products.filter(
+        product => product.id !== id
+    );
+
+
+    saveProducts(updated);
+
+    renderProducts();
+
+    updateStats();
+
+
+    alert(
+        "Product deleted."
+    );
+
+}
+
+
+/* =========================================================
+   CLEAR BUTTON
+========================================================= */
+
+clearBtn.addEventListener(
+"click",
+function(){
+
+    resetForm();
+
+});
+
+
+/* =========================================================
+   CANCEL EDIT
+========================================================= */
+
+cancelBtn.addEventListener(
+"click",
+function(){
+
+    resetForm();
+
+});
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+searchProducts.addEventListener(
+"input",
+function(){
+
+    renderProducts();
+
+});
+
+
+/* =========================================================
+   STATISTICS
+========================================================= */
+
+function updateStats(){
+
+    const products =
+    getProducts();
+
+
+    document.getElementById(
+        "totalProducts"
+    ).textContent =
+    products.length;
+
+
+    document.getElementById(
+        "fashionCount"
+    ).textContent =
+    products.filter(
+        p => p.category === "Fashion"
+    ).length;
+
+
+    document.getElementById(
+        "electronicsCount"
+    ).textContent =
+    products.filter(
+        p => p.category === "Electronics"
+    ).length;
+
+
+    document.getElementById(
+        "featuredCount"
+    ).textContent =
+    products.filter(
+        p => p.featured
+    ).length;
+
+}
+
+
+/* =========================================================
+   BASIC HTML ESCAPING
+========================================================= */
+
+function escapeHTML(value){
+
+    return String(value || "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* =========================================================
+   INI 
