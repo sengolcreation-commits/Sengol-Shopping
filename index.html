@@ -1,882 +1,1384 @@
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta charset="UTF-8">
+<title>Sengol Shopping | Discover. Explore. Shop Smarter.</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description"
+content="Sengol Shopping - Discover, explore and shop smarter across fashion, electronics, home and lifestyle.">
 
-    <title>Sengol Shopping — Discover • Explore • Shop Smarter</title>
+<style>
 
-    <meta
-        name="description"
-        content="Sengol Shopping is a modern shopping discovery platform for fashion, electronics, home decor and more."
-    >
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-    <meta name="theme-color" content="#111111">
+html{
+    scroll-behavior:smooth;
+}
 
-    <link rel="stylesheet" href="style.css">
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f7f8fc;
+    color:#161616;
+    line-height:1.6;
+}
 
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+img{
+    max-width:100%;
+}
+
+/* ================= CONTAINER ================= */
+
+.container{
+    width:92%;
+    max-width:1200px;
+    margin:auto;
+}
+
+/* ================= HEADER ================= */
+
+.header{
+    position:sticky;
+    top:0;
+    z-index:9999;
+    background:rgba(255,255,255,.96);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid #e8e8ef;
+}
+
+.nav{
+    min-height:76px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.logo img{
+    width:155px;
+    max-height:58px;
+    object-fit:contain;
+    display:block;
+}
+
+.menu{
+    display:flex;
+    align-items:center;
+    gap:25px;
+}
+
+.menu a{
+    font-size:14px;
+    font-weight:700;
+    transition:.25s;
+}
+
+.menu a:hover{
+    color:#6c3cff;
+}
+
+.menu-btn{
+    display:none;
+    border:0;
+    width:45px;
+    height:45px;
+    border-radius:12px;
+    background:linear-gradient(135deg,#6c3cff,#ff3d81);
+    color:#fff;
+    font-size:24px;
+    cursor:pointer;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    min-height:650px;
+    display:flex;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 10% 20%,#dff5ff 0,transparent 28%),
+        radial-gradient(circle at 90% 10%,#ffe1ef 0,transparent 30%),
+        radial-gradient(circle at 70% 90%,#e8ddff 0,transparent 30%),
+        #fff;
+}
+
+.hero:before{
+    content:"";
+    position:absolute;
+    width:320px;
+    height:320px;
+    background:linear-gradient(135deg,#6c3cff,#ff3d81);
+    filter:blur(100px);
+    opacity:.15;
+    right:-100px;
+    bottom:-100px;
+}
+
+.hero-content{
+    padding:90px 0;
+    position:relative;
+    z-index:2;
+}
+
+.eyebrow,
+.section-label{
+    font-size:12px;
+    letter-spacing:2px;
+    font-weight:800;
+    color:#6c3cff;
+    margin-bottom:15px;
+}
+
+.hero h1{
+    font-size:clamp(48px,8vw,88px);
+    line-height:.98;
+    letter-spacing:-4px;
+    margin-bottom:28px;
+}
+
+.hero h1 span{
+    background:linear-gradient(90deg,#6c3cff,#ff3d81,#ff9f1c);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+
+.hero-text{
+    max-width:650px;
+    font-size:18px;
+    color:#626274;
+    margin-bottom:35px;
+}
+
+.hero-buttons,
+.contact-buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+}
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:14px 23px;
+    border-radius:12px;
+    font-weight:800;
+    transition:.25s;
+}
+
+.primary-btn{
+    color:white;
+    background:linear-gradient(135deg,#6c3cff,#ff3d81);
+    box-shadow:0 10px 25px rgba(108,60,255,.25);
+}
+
+.secondary-btn{
+    background:white;
+    border:1px solid #ddd;
+    color:#222;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+}
+
+/* ================= SECTIONS ================= */
+
+.section{
+    padding:100px 0;
+}
+
+.light-section{
+    background:#f1f3fa;
+}
+
+.section-heading{
+    max-width:720px;
+    margin-bottom:45px;
+}
+
+.section-heading h2{
+    font-size:clamp(34px,5vw,56px);
+    line-height:1.05;
+    margin-bottom:15px;
+}
+
+.section-heading p:last-child{
+    color:#66677a;
+}
+
+/* ================= CATEGORIES ================= */
+
+.category-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.category-card{
+    position:relative;
+    overflow:hidden;
+    min-height:220px;
+    padding:30px;
+    border-radius:22px;
+    background:white;
+    border:1px solid #e5e5ee;
+    transition:.3s;
+}
+
+.category-card:nth-child(1){
+    background:linear-gradient(145deg,#fff0f7,#fff);
+}
+
+.category-card:nth-child(2){
+    background:linear-gradient(145deg,#eef5ff,#fff);
+}
+
+.category-card:nth-child(3){
+    background:linear-gradient(145deg,#effff6,#fff);
+}
+
+.category-card:nth-child(4){
+    background:linear-gradient(145deg,#fff8e9,#fff);
+}
+
+.category-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 20px 45px rgba(0,0,0,.09);
+}
+
+.category-icon{
+    width:60px;
+    height:60px;
+    display:grid;
+    place-items:center;
+    border-radius:17px;
+    margin-bottom:28px;
+    color:#fff;
+    font-weight:900;
+    background:linear-gradient(135deg,#6c3cff,#ff3d81);
+}
+
+.category-card:nth-child(2) .category-icon{
+    background:linear-gradient(135deg,#007bff,#00c6ff);
+}
+
+.category-card:nth-child(3) .category-icon{
+    background:linear-gradient(135deg,#00a86b,#7bdcb5);
+}
+
+.category-card:nth-child(4) .category-icon{
+    background:linear-gradient(135deg,#ff8a00,#ffd000);
+}
+
+.category-card h3{
+    margin-bottom:7px;
+}
+
+.category-card p{
+    color:#6c6d7a;
+}
+
+/* ================= PRODUCTS ================= */
+
+.product-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+
+.product-card{
+    overflow:hidden;
+    background:white;
+    border-radius:20px;
+    border:1px solid #e3e3eb;
+    transition:.3s;
+}
+
+.product-card:hover{
+    transform:translateY(-7px);
+    box-shadow:0 20px 45px rgba(0,0,0,.10);
+}
+
+.product-image{
+    height:240px;
+    display:grid;
+    place-items:center;
+    background:
+        linear-gradient(135deg,#e8ddff,#ffe0ed);
+    color:#6c3cff;
+    font-weight:800;
+}
+
+.product-card:nth-child(2) .product-image{
+    background:linear-gradient(135deg,#dff4ff,#e7e0ff);
+    color:#087cff;
+}
+
+.product-card:nth-child(3) .product-image{
+    background:linear-gradient(135deg,#fff0d6,#e2ffe9);
+    color:#e17a00;
+}
+
+.product-info{
+    padding:25px;
+}
+
+.product-category{
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1.5px;
+    color:#6c3cff;
+    margin-bottom:8px;
+}
+
+.product-info h3{
+    margin-bottom:8px;
+}
+
+.product-info>p{
+    color:#6c6d7a;
+}
+
+.rating{
+    margin:15px 0;
+    color:#ff9d00;
+    font-weight:800;
+}
+
+.product-btn{
+    display:inline-block;
+    padding:11px 18px;
+    color:white;
+    border-radius:9px;
+    background:linear-gradient(135deg,#6c3cff,#ff3d81);
+    font-weight:800;
+}
+
+/* ================= FEATURED ================= */
+
+.featured-box{
+    padding:60px;
+    border-radius:25px;
+    color:white;
+    background:
+        radial-gradient(circle at 90% 10%,#ff3d81,transparent 30%),
+        linear-gradient(135deg,#26145f,#6c3cff);
+    box-shadow:0 25px 55px rgba(65,30,150,.2);
+}
+
+.featured-box h3{
+    font-size:32px;
+    margin-bottom:15px;
+}
+
+.featured-box p{
+    max-width:700px;
+    color:#e8e4ff;
+    margin-bottom:25px;
+}
+
+.featured-box .primary-btn{
+    background:white;
+    color:#5126d8;
+}
+
+/* ================= WHY ================= */
+
+.dark-section{
+    color:white;
+    background:
+        radial-gradient(circle at 10% 20%,#3a1975,transparent 30%),
+        radial-gradient(circle at 90% 80%,#751c55,transparent 30%),
+        #111;
+}
+
+.dark-section .section-label{
+    color:#c9b9ff;
+}
+
+.dark-section .section-heading p:last-child{
+    color:#b8b8c8;
+}
+
+.features-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+
+.feature{
+    padding:35px;
+    border:1px solid rgba(255,255,255,.15);
+    background:rgba(255,255,255,.06);
+    backdrop-filter:blur(10px);
+    border-radius:20px;
+    transition:.3s;
+}
+
+.feature:hover{
+    transform:translateY(-6px);
+    background:rgba(255,255,255,.10);
+}
+
+.feature-icon{
+    width:50px;
+    height:50px;
+    display:grid;
+    place-items:center;
+    border-radius:14px;
+    background:linear-gradient(135deg,#6c3cff,#ff3d81);
+    margin-bottom:20px;
+    font-weight:900;
+}
+
+.feature p{
+    color:#bbb;
+    margin-top:10px;
+}
+
+/* ================= ABOUT ================= */
+
+.about{
+    display:grid;
+    grid-template-columns:1.4fr .6fr;
+    gap:60px;
+    align-items:center;
+}
+
+.about h2{
+    font-size:clamp(38px,5vw,60px);
+    margin-bottom:20px;
+}
+
+.about p{
+    color:#5f6070;
+    margin-bottom:18px;
+}
+
+.about-highlight{
+    min-height:270px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:30px;
+    border-radius:25px;
+    color:white;
+    background:linear-gradient(135deg,#6c3cff,#ff3d81,#ff9f1c);
+    box-shadow:0 20px 50px rgba(108,60,255,.2);
+}
+
+.about-highlight strong{
+    font-size:40px;
+}
+
+.about-highlight span{
+    margin-top:10px;
+}
+
+/* ================= FAQ ================= */
+
+.faq{
+    display:grid;
+    gap:12px;
+}
+
+details{
+    background:white;
+    border:1px solid #ddd;
+    border-radius:14px;
+    padding:20px;
+}
+
+summary{
+    cursor:pointer;
+    font-weight:800;
+}
+
+details p{
+    color:#666;
+    margin-top:15px;
+}
+
+/* ================= SUPPORT ================= */
+
+.contact-section{
+    text-align:center;
+}
+
+.contact{
+    max-width:800px;
+}
+
+.contact>p:not(.section-label){
+    color:#666;
+    margin-bottom:15px;
+}
+
+.qr-box{
+    width:270px;
+    margin:30px auto;
+    padding:14px;
+    background:white;
+    border-radius:20px;
+    border:1px solid #ddd;
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+}
+
+.qr-box img{
+    width:100%;
+    display:block;
+    border-radius:12px;
+}
+
+/* ================= RATING ================= */
+
+.rating-box{
+    max-width:700px;
+    margin:auto;
+    padding:40px;
+    text-align:center;
+    background:white;
+    border:1px solid #e0e0e8;
+    border-radius:22px;
+    box-shadow:0 15px 40px rgba(0,0,0,.06);
+}
+
+.rating-box h3{
+    font-size:30px;
+}
+
+.stars{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    margin:22px 0;
+}
+
+.star{
+    width:45px;
+    height:45px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    background:white;
+    cursor:pointer;
+    font-weight:900;
+    color:#777;
+    transition:.2s;
+}
+
+.star.active{
+    background:linear-gradient(135deg,#ff9d00,#ff3d81);
+    color:white;
+    border-color:transparent;
+}
+
+#rating-message{
+    color:#666;
+}
+
+/* ================= SOCIAL ================= */
+
+.social-section{
+    text-align:center;
+}
+
+.social-links{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:28px;
+}
+
+.social-links a{
+    padding:13px 20px;
+    border-radius:10px;
+    color:white;
+    font-weight:800;
+    transition:.25s;
+}
+
+.social-links a:nth-child(1){
+    background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);
+}
+
+.social-links a:nth-child(2){
+    background:#bd081c;
+}
+
+.social-links a:nth-child(3){
+    background:#1877f2;
+}
+
+.social-links a:nth-child(4){
+    background:#25d366;
+}
+
+.social-links a:nth-child(5){
+    background:#ff0000;
+}
+
+.social-links a:hover{
+    transform:translateY(-4px);
+    filter:brightness(.92);
+}
+
+/* ================= FOOTER ================= */
+
+.footer{
+    padding:70px 0;
+    color:white;
+    background:#101018;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:1.5fr 1fr 1fr 1fr;
+    gap:40px;
+}
+
+.footer-logo{
+    font-size:22px;
+    font-weight:900;
+    margin-bottom:12px;
+}
+
+.footer p{
+    color:#999;
+    margin-bottom:12px;
+}
+
+.footer h3{
+    margin-bottom:15px;
+}
+
+.footer a{
+    display:block;
+    color:#aaa;
+    margin-bottom:9px;
+    transition:.2s;
+}
+
+.footer a:hover{
+    color:#fff;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:850px){
+
+    .menu-btn{
+        display:block;
+    }
+
+    .menu{
+        display:none;
+        position:absolute;
+        top:76px;
+        left:0;
+        right:0;
+        padding:18px;
+        flex-direction:column;
+        align-items:stretch;
+        gap:0;
+        background:white;
+        border-bottom:1px solid #ddd;
+        box-shadow:0 15px 30px rgba(0,0,0,.08);
+    }
+
+    .menu.active{
+        display:flex;
+    }
+
+    .menu a{
+        padding:15px;
+        border-bottom:1px solid #eee;
+    }
+
+    .category-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .product-grid,
+    .features-grid{
+        grid-template-columns:1fr;
+    }
+
+    .about{
+        grid-template-columns:1fr;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:550px){
+
+    .logo img{
+        width:125px;
+    }
+
+    .hero{
+        min-height:580px;
+    }
+
+    .hero h1{
+        font-size:48px;
+        letter-spacing:-2px;
+    }
+
+    .section{
+        padding:70px 0;
+    }
+
+    .category-grid{
+        grid-template-columns:1fr;
+    }
+
+    .featured-box{
+        padding:35px 25px;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .btn{
+        width:100%;
+    }
+
+    .hero-buttons,
+    .contact-buttons{
+        width:100%;
+    }
+}
+
+</style>
 </head>
-
 
 <body>
 
+<!-- ================= HEADER ================= -->
 
-    <!-- =========================
-         HEADER
-    ========================== -->
+<header class="header">
 
-    <header class="header">
+<div class="container nav">
 
-        <div class="container nav">
+<a href="#home" class="logo">
+<img src="Logo.png" alt="Sengol Shopping Logo">
+</a>
 
+<nav class="menu" id="mainMenu">
 
-            <!-- LOGO -->
+<a href="#home">Home</a>
+<a href="#categories">Categories</a>
+<a href="#trending">Trending</a>
+<a href="#featured">Featured</a>
+<a href="#about">About</a>
+<a href="#support">Support</a>
+<a href="#rating">Rating</a>
+<a href="#contact">Contact</a>
 
-            <a
-                href="#home"
-                class="logo"
-                aria-label="Sengol Shopping Home"
-            >
+</nav>
 
-                <img
-                    src="Logo.png"
-                    alt="Sengol Shopping Logo"
-                >
+<button class="menu-btn"
+id="menuBtn"
+type="button"
+aria-label="Open Menu"
+aria-expanded="false">
+☰
+</button>
 
-            </a>
+</div>
 
+</header>
 
-            <!-- NAVIGATION -->
 
-            <nav
-                class="menu"
-                aria-label="Main Navigation"
-            >
+<main>
 
-                <a href="#home">
-                    Home
-                </a>
+<!-- ================= HERO ================= -->
 
-                <a href="#categories">
-                    Categories
-                </a>
+<section class="hero" id="home">
 
-                <a href="#trending">
-                    Trending
-                </a>
+<div class="container hero-content">
 
-                <a href="#featured">
-                    Featured
-                </a>
+<p class="eyebrow">
+EST. 2026
+</p>
 
-                <a href="#about">
-                    About
-                </a>
+<h1>
+Discover.<br>
+Explore.<br>
+<span>Shop Smarter.</span>
+</h1>
 
-                <a href="#support">
-                    Support
-                </a>
+<p class="hero-text">
+Discover products across fashion, electronics, home and lifestyle
+through Sengol Shopping.
+</p>
 
-                <a href="#rating">
-                    Rating
-                </a>
+<div class="hero-buttons">
 
-                <a href="#contact">
-                    Contact
-                </a>
+<a href="#categories" class="btn primary-btn">
+Explore Categories
+</a>
 
-            </nav>
+<a href="#trending" class="btn secondary-btn">
+Trending Products
+</a>
 
+</div>
 
-            <!-- MOBILE MENU -->
+</div>
 
-            <button
-                type="button"
-                class="menu-btn"
-                aria-label="Open Menu"
-                aria-expanded="false"
-            >
-                ☰
-            </button>
+</section>
 
 
-        </div>
+<!-- ================= CATEGORIES ================= -->
 
-    </header>
+<section class="section" id="categories">
 
+<div class="container">
 
+<div class="section-heading">
 
-    <main>
+<p class="section-label">
+EXPLORE
+</p>
 
+<h2>
+Shop by Category
+</h2>
 
-        <!-- =========================
-             HERO
-        ========================== -->
+<p>
+Discover products across different categories.
+</p>
 
-        <section
-            class="hero"
-            id="home"
-        >
+</div>
 
-            <div class="container hero-content">
 
-                <p class="eyebrow">
-                    EST. 2026 • GEN-Z CHOICE
-                </p>
+<div class="category-grid">
 
-                <h1>
-                    Discover.<br>
-                    Explore.<br>
-                    <span>Shop Smarter.</span>
-                </h1>
+<a href="#trending" class="category-card">
 
-                <p class="hero-text">
-                    Discover products across different categories
-                    and marketplaces in one place.
-                </p>
+<div class="category-icon">
+SF
+</div>
 
+<h3>
+Sengol Fashion
+</h3>
 
-                <div class="hero-buttons">
+<p>
+Fashion and lifestyle discoveries.
+</p>
 
-                    <a
-                        href="#categories"
-                        class="btn primary-btn"
-                    >
-                        Explore Categories
-                    </a>
+</a>
 
-                    <a
-                        href="#trending"
-                        class="btn secondary-btn"
-                    >
-                        Trending Products
-                    </a>
 
-                </div>
+<a href="#trending" class="category-card">
 
-            </div>
+<div class="category-icon">
+SE
+</div>
 
-        </section>
+<h3>
+Sengol Electronics
+</h3>
 
+<p>
+Technology and useful gadgets.
+</p>
 
+</a>
 
-        <!-- =========================
-             CATEGORIES
-        ========================== -->
 
-        <section
-            class="section"
-            id="categories"
-        >
+<a href="#trending" class="category-card">
 
-            <div class="container">
+<div class="category-icon">
+SH
+</div>
 
-                <div class="section-heading">
+<h3>
+Sengol Home
+</h3>
 
-                    <p class="section-label">
-                        EXPLORE
-                    </p>
+<p>
+Home decor and lifestyle products.
+</p>
 
-                    <h2>
-                        Shop by Category
-                    </h2>
+</a>
 
-                    <p>
-                        Explore products from different categories.
-                    </p>
 
-                </div>
+<a href="#trending" class="category-card">
 
+<div class="category-icon">
+SO
+</div>
 
-                <div class="category-grid">
+<h3>
+Sengol Other
+</h3>
 
+<p>
+More interesting discoveries.
+</p>
 
-                    <a
-                        href="#trending"
-                        class="category-card"
-                    >
+</a>
 
-                        <div class="category-icon">
-                            Fashion
-                        </div>
+</div>
 
-                        <h3>
-                            Sengol Fashion
-                        </h3>
+</div>
 
-                        <p>
-                            Style and trends
-                        </p>
+</section>
 
-                    </a>
 
+<!-- ================= TRENDING ================= -->
 
+<section class="section light-section" id="trending">
 
-                    <a
-                        href="#trending"
-                        class="category-card"
-                    >
+<div class="container">
 
-                        <div class="category-icon">
-                            Electronics
-                        </div>
+<div class="section-heading">
 
-                        <h3>
-                            Sengol Electronics
-                        </h3>
+<p class="section-label">
+TRENDING NOW
+</p>
 
-                        <p>
-                            Tech and gadgets
-                        </p>
+<h2>
+Trending Products
+</h2>
 
-                    </a>
+<p>
+Discover products and collections from Sengol Shopping.
+</p>
 
+</div>
 
 
-                    <a
-                        href="#trending"
-                        class="category-card"
-                    >
+<div class="product-grid">
 
-                        <div class="category-icon">
-                            Home
-                        </div>
 
-                        <h3>
-                            Sengol Home Decor
-                        </h3>
+<article class="product-card">
 
-                        <p>
-                            Home and lifestyle
-                        </p>
+<div class="product-image">
+PRODUCT IMAGE
+</div>
 
-                    </a>
+<div class="product-info">
 
+<p class="product-category">
+FASHION
+</p>
 
+<h3>
+Product Coming Soon
+</h3>
 
-                    <a
-                        href="#trending"
-                        class="category-card"
-                    >
+<p>
+Product information will appear here.
+</p>
 
-                        <div class="category-icon">
-                            Other
-                        </div>
+<div class="rating">
+Rating: 5.0 / 5
+</div>
 
-                        <h3>
-                            Sengol Other
-                        </h3>
+<a href="#contact" class="product-btn">
+Shop Now
+</a>
 
-                        <p>
-                            More discoveries
-                        </p>
+</div>
 
-                    </a>
+</article>
 
 
-                </div>
+<article class="product-card">
 
-            </div>
+<div class="product-image">
+PRODUCT IMAGE
+</div>
 
-        </section>
+<div class="product-info">
 
+<p class="product-category">
+ELECTRONICS
+</p>
 
+<h3>
+Product Coming Soon
+</h3>
 
-        <!-- =========================
-             TRENDING
-        ========================== -->
+<p>
+Product information will appear here.
+</p>
 
-        <section
-            class="section light-section"
-            id="trending"
-        >
+<div class="rating">
+Rating: 5.0 / 5
+</div>
 
-            <div class="container">
+<a href="#contact" class="product-btn">
+Shop Now
+</a>
 
+</div>
 
-                <div class="section-heading">
+</article>
 
-                    <p class="section-label">
-                        TRENDING NOW
-                    </p>
 
-                    <h2>
-                        Trending Products
-                    </h2>
+<article class="product-card">
 
-                    <p>
-                        Discover products worth exploring.
-                    </p>
+<div class="product-image">
+PRODUCT IMAGE
+</div>
 
-                </div>
+<div class="product-info">
 
+<p class="product-category">
+HOME
+</p>
 
-                <div class="product-grid">
+<h3>
+Product Coming Soon
+</h3>
 
+<p>
+Product information will appear here.
+</p>
 
-                    <article class="product-card">
+<div class="rating">
+Rating: 5.0 / 5
+</div>
 
-                        <div class="product-image">
+<a href="#contact" class="product-btn">
+Shop Now
+</a>
 
-                            <span>
-                                Coming Soon
-                            </span>
+</div>
 
-                        </div>
+</article>
 
-                        <div class="product-info">
 
-                            <p class="product-category">
-                                Fashion
-                            </p>
+</div>
 
-                            <h3>
-                                Trending Product
-                            </h3>
+</div>
 
-                            <p>
-                                Product information will appear here.
-                            </p>
+</section>
 
-                            <div class="product-rating">
-                                Product rating will appear here
-                            </div>
 
-                            <a
-                                href="#categories"
-                                class="product-btn"
-                            >
-                                Explore Products
-                            </a>
+<!-- ================= FEATURED ================= -->
 
-                        </div>
+<section class="section" id="featured">
 
-                    </article>
+<div class="container">
 
+<div class="section-heading">
 
+<p class="section-label">
+OUR PICKS
+</p>
 
-                    <article class="product-card">
+<h2>
+Featured Products
+</h2>
 
-                        <div class="product-image">
+<p>
+Hand-picked discoveries from Sengol Shopping.
+</p>
 
-                            <span>
-                                Coming Soon
-                            </span>
+</div>
 
-                        </div>
 
-                        <div class="product-info">
+<div class="featured-box">
 
-                            <p class="product-category">
-                                Electronics
-                            </p>
+<h3>
+More products are coming soon.
+</h3>
 
-                            <h3>
-                                Featured Product
-                            </h3>
+<p>
+Sengol Shopping is building a growing collection of products
+across fashion, electronics, home and lifestyle.
+</p>
 
-                            <p>
-                                Product information will appear here.
-                            </p>
+<a href="#categories" class="btn primary-btn">
+Explore Categories
+</a>
 
-                            <div class="product-rating">
-                                Product rating will appear here
-                            </div>
+</div>
 
-                            <a
-                                href="#categories"
-                                class="product-btn"
-                            >
-                                Explore Products
-                            </a>
+</div>
 
-                        </div>
+</section>
 
-                    </article>
 
+<!-- ================= WHY SENGOL ================= -->
 
+<section class="section dark-section">
 
-                    <article class="product-card">
+<div class="container">
 
-                        <div class="product-image">
+<div class="section-heading">
 
-                            <span>
-                                Coming Soon
-                            </span>
+<p class="section-label">
+WHY SENGOL
+</p>
 
-                        </div>
+<h2>
+Why Sengol Shopping?
+</h2>
 
-                        <div class="product-info">
+</div>
 
-                            <p class="product-category">
-                                Home Decor
-                            </p>
 
-                            <h3>
-                                New Discovery
-                            </h3>
+<div class="features-grid">
 
-                            <p>
-                                Product information will appear here.
-                            </p>
 
-                            <div class="product-rating">
-                                Product rating will appear here
-                            </div>
+<div class="feature">
 
-                            <a
-                                href="#categories"
-                                class="product-btn"
-                            >
-                                Explore Products
-                            </a>
+<div class="feature-icon">
+01
+</div>
 
-                        </div>
+<h3>
+Discover
+</h3>
 
-                    </article>
+<p>
+Discover interesting products from different marketplaces
+in one place.
+</p>
 
+</div>
 
-                </div>
 
-            </div>
+<div class="feature">
 
-        </section>
+<div class="feature-icon">
+02
+</div>
 
+<h3>
+Explore
+</h3>
 
+<p>
+Explore different categories and collections through
+Sengol Shopping.
+</p>
 
-        <!-- =========================
-             FEATURED
-        ========================== -->
+</div>
 
-        <section
-            class="section"
-            id="featured"
-        >
 
-            <div class="container">
+<div class="feature">
 
+<div class="feature-icon">
+03
+</div>
 
-                <div class="section-heading">
+<h3>
+Shop Smarter
+</h3>
 
-                    <p class="section-label">
-                        OUR PICKS
-                    </p>
+<p>
+Find products and visit the original seller or marketplace
+to complete your purchase.
+</p>
 
-                    <h2>
-                        Featured Products
-                    </h2>
+</div>
 
-                    <p>
-                        Hand-picked discoveries from Sengol Shopping.
-                    </p>
 
-                </div>
+</div>
 
+</div>
 
-                <div class="featured-box">
+</section>
 
-                    <h3>
-                        More products coming soon.
-                    </h3>
 
-                    <p>
-                        Sengol Shopping is building a growing
-                        collection across fashion, electronics,
-                        home decor and more.
-                    </p>
+<!-- ================= ABOUT ================= -->
 
-                    <a
-                        href="#categories"
-                        class="btn primary-btn"
-                    >
-                        Explore Categories
-                    </a>
+<section class="section" id="about">
 
-                </div>
+<div class="container about">
 
+<div>
 
-            </div>
+<p class="section-label">
+ABOUT SENGOL
+</p>
 
-        </section>
+<h2>
+Sengol Shopping
+</h2>
 
+<p>
+Sengol Shopping is a modern product discovery platform created
+to help people discover products across different categories
+and marketplaces.
+</p>
 
+<p>
+Our vision is to build a professional and scalable shopping
+ecosystem under the Sengol brand.
+</p>
 
-        <!-- =========================
-             WHY SENGOL
-        ========================== -->
+</div>
 
-        <section class="section dark-section">
 
-            <div class="container">
+<div class="about-highlight">
 
+<strong>
+SENGOL
+</strong>
 
-                <div class="section-heading">
+<span>
+Discover • Explore • Shop Smarter
+</span>
 
-                    <p class="section-label">
-                        WHY SENGOL
-                    </p>
+</div>
 
-                    <h2>
-                        Why Sengol Shopping?
-                    </h2>
+</div>
 
-                </div>
+</section>
 
 
-                <div class="features-grid">
+<!-- ================= FAQ ================= -->
 
+<section class="section light-section">
 
-                    <div class="feature">
+<div class="container">
 
-                        <div class="feature-icon">
-                            Discover
-                        </div>
+<div class="section-heading">
 
-                        <h3>
-                            Discover
-                        </h3>
+<p class="section-label">
+HELP
+</p>
 
-                        <p>
-                            Discover interesting products from
-                            different marketplaces in one place.
-                        </p>
+<h2>
+Frequently Asked Questions
+</h2>
 
-                    </div>
+</div>
 
 
+<div class="faq">
 
-                    <div class="feature">
+<details>
 
-                        <div class="feature-icon">
-                            Explore
-                        </div>
+<summary>
+Does Sengol Shopping sell products directly?
+</summary>
 
-                        <h3>
-                            Explore
-                        </h3>
+<p>
+Sengol Shopping is a product discovery platform.
+Purchases may be completed on the original marketplace
+or seller website.
+</p>
 
-                        <p>
-                            Explore categories and product
-                            collections easily.
-                        </p>
+</details>
 
-                    </div>
 
+<details>
 
+<summary>
+Where will I buy the product?
+</summary>
 
-                    <div class="feature">
+<p>
+Product buttons can redirect customers to the original
+product or seller page.
+</p>
 
-                        <div class="feature-icon">
-                            Smarter
-                        </div>
+</details>
 
-                        <h3>
-                            Shop Smarter
-                        </h3>
 
-                        <p>
-                            Find products and visit the original
-                            marketplace to complete your purchase.
-                        </p>
+<details>
 
-                    </div>
+<summary>
+Can Sengol Shopping earn commission?
+</summary>
 
+<p>
+Where applicable, Sengol Shopping may earn commission
+through authorized affiliate links.
+</p>
 
-                </div>
+</details>
 
-            </div>
+</div>
 
-        </section>
+</div>
 
+</section>
 
 
-        <!-- =========================
-             CUSTOMER ACCOUNT
-        ========================== -->
+<!-- ================= SUPPORT ================= -->
 
-        <section class="section">
+<section class="section contact-section" id="support">
 
-            <div class="container">
+<div class="container contact">
 
+<p class="section-label">
+SUPPORT SENGOL
+</p>
 
-                <div class="section-heading">
+<h2>
+Support Our Journey
+</h2>
 
-                    <p class="section-label">
-                        YOUR ACCOUNT
-                    </p>
+<p>
+If you like Sengol Shopping and want to support our journey,
+you can contribute through UPI.
+</p>
 
-                    <h2>
-                        Sengol Customer Account
-                    </h2>
 
-                    <p>
-                        Create an account to access future
-                        customer features.
-                    </p>
+<div class="qr-box">
 
-                </div>
+<img src="upi-qr.png"
+alt="Sengol Shopping UPI QR Code">
 
+</div>
 
-                <div class="featured-box">
 
-                    <h3>
-                        Login and Signup
-                    </h3>
+<p>
+Scan the QR code using your UPI app.
+</p>
 
-                    <p>
-                        Customer accounts, wishlist, saved products,
-                        ratings and other account features will be
-                        connected through secure authentication.
-                    </p>
+</div>
 
-                    <button
-                        type="button"
-                        class="btn primary-btn"
-                        disabled
-                    >
-                        Login Coming Soon
-                    </button>
+</section>
 
-                </div>
 
+<!-- ================= RATING ================= -->
 
-            </div>
+<section class="section" id="rating">
 
-        </section>
+<div class="container">
 
+<div class="rating-box">
 
+<p class="section-label">
+YOUR FEEDBACK
+</p>
 
-        <!-- =========================
-             ABOUT
-        ========================== -->
+<h3>
+Rate Sengol Shopping
+</h3>
 
-        <section
-            class="section"
-            id="about"
-        >
-
-            <div class="container about">
-
-
-                <div>
-
-                    <p class="section-label">
-                        ABOUT SENGOL
-                    </p>
-
-                    <h2>
-                        Sengol Shopping
-                    </h2>
-
-                    <p>
-                        Sengol Shopping is a modern shopping
-                        discovery platform created to help people
-                        discover products across different
-                        categories and marketplaces.
-                    </p>
-
-                    <p>
-                        Our vision is to build a professional
-                        and scalable shopping ecosystem under
-                        the Sengol brand.
-                    </p>
-
-                </div>
-
-
-                <div class="about-highlight">
-
-                    <strong>
-                        SENGOL
-                    </strong>
-
-                    <span>
-                        Discover • Explore • Shop Smarter
-                    </span>
-
-                </div>
-
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =========================
-             FAQ
-        ========================== -->
-
-        <section class="section light-section">
-
-            <div class="container">
-
-
-                <div class="section-heading">
-
-                    <p class="section-label">
-                        HELP
-                    </p>
-
-                    <h2>
-                        Frequently Asked Questions
-                    </h2>
-
-                </div>
-
-
-                <div class="faq">
-
-
-                    <details>
-
-                        <summary>
-                            Does Sengol Shopping sell products directly?
-                        </summary>
-
-                        <p>
-                            Sengol Shopping is a product discovery
-                            platform. Purchases are completed on
-                            the original marketplace or seller website.
-                        </p>
-
-                    </details>
-
-
-
-                    <details>
-
-                        <summary>
-                            Where will I buy the product?
-                        </summary>
-
-                        <p>
-                            A Shop Now or Buy Now button may redirect
-                            you to the original marketplace or product page.
-                        </p>
-
-                    </details>
-
-
-
-                    <details>
-
-                        <summary>
-                            Can Sengol Shopping receive a commission?
-                        </summary>
-
-                        <p>
-                            Where applicable, Sengol Shopping may
-                            earn a commission through authorized
-                            affiliate links.
-                        </p>
-
-                    </details>
-
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =========================
-             WEBSITE RATING
-        ========================== -->
-
-        <section
-            class="section"
-            id="rating"
-        >
-
-            <div class="container contact">
-
-
-                <p class="section-label">
-                    CUSTOMER FEEDBACK
-                </p>
-
-                <h2>
-                    Rate Sengol Shopping
-                </h2>
-
-                <p>
-                    Tell us about your experience with Sengol Shopping.
-                </p>
-
-
-                <div class="featured-box">
-
-                    <h3>
-                        Website Rating
-                    </h3>
-
-                    <p>
-                        Customer ratings and reviews will appear here
-                        after the secure rating system is connected.
-                    </p>
-
-                    <div class="website-rating">
-
-                        <span>
-                            1
-                        </span>
-
-                        <span>
-                            2
-                        </span>
-
-                        <span>
-                            3
-                        </span>
-
-                        <span>
-                            4
-                        </span>
-
-                        <span>
-                            5
-                        </span>
-
-                    </div>
-
-                    <button
-                        type="button"
-                        class="btn primary-btn"
-                        disabled
-                    >
-                        Rating System Coming Soon
-                    </button>
-
-                </div>
-
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =========================
-             SUPPORT
-        ========================== -->
-
-        <section
-            class="section contact-section"
-            id="support"
-        >
-
-            <div class="container contact">
-
-
-                <p class="section-label">
-                    SUPPORT SENGOL
-                </p>
-
-                <h2>
-                    Support Our Jo            
+<p>
+        
