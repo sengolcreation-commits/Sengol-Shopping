@@ -1,0 +1,243 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sengol Shopping — Admin Panel</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .admin-page {
+            min-height: 100vh;
+            background: #f5f5f5;
+            padding: 50px 0;
+        }
+
+        .admin-box {
+            max-width: 700px;
+            margin: auto;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 16px;
+            border: 1px solid #e5e5e5;
+        }
+
+        .admin-box h1 {
+            margin-bottom: 8px;
+        }
+
+        .admin-box > p {
+            color: #777;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #d5d5d5;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 14px;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .admin-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .notice {
+            margin-top: 25px;
+            padding: 15px;
+            border-radius: 8px;
+            background: #f1f1f1;
+            color: #555;
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="admin-page">
+
+        <div class="container">
+
+            <a href="index.html" class="back-link">
+                ← Back to Sengol Shopping
+            </a>
+
+            <div class="admin-box">
+
+                <p class="section-label">SENGOL SHOPPING</p>
+
+                <h1>Admin Panel</h1>
+
+                <p>
+                    Add a new product to your Sengol Shopping catalogue.
+                </p>
+
+                <form id="productForm">
+
+                    <div class="form-group">
+                        <label for="productName">Product Name</label>
+
+                        <input
+                            type="text"
+                            id="productName"
+                            placeholder="Enter product name"
+                            required
+                        >
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="productCategory">Category</label>
+
+                        <select id="productCategory" required>
+
+                            <option value="">
+                                Select Category
+                            </option>
+
+                            <option value="Fashion">
+                                Sengol Fashion
+                            </option>
+
+                            <option value="Electronics">
+                                Sengol Electronics
+                            </option>
+
+                            <option value="Home Decor">
+                                Sengol Home Decor
+                            </option>
+
+                            <option value="Other">
+                                Sengol Other
+                            </option>
+
+                        </select>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="productImage">
+                            Product Image URL
+                        </label>
+
+                        <input
+                            type="url"
+                            id="productImage"
+                            placeholder="https://example.com/image.jpg"
+                        >
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="productDescription">
+                            Product Description
+                        </label>
+
+                        <textarea
+                            id="productDescription"
+                            placeholder="Enter product description"
+                            required
+                        ></textarea>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="affiliateLink">
+                            Affiliate / Product Link
+                        </label>
+
+                        <input
+                            type="url"
+                            id="affiliateLink"
+                            placeholder="https://example.com/product"
+                            required
+                        >
+                    </div>
+
+
+                    <div class="admin-actions">
+
+                        <button
+                            type="submit"
+                            class="btn primary-btn"
+                        >
+                            Add Product
+                        </button>
+
+                        <button
+                            type="reset"
+                            class="btn secondary-btn"
+                        >
+                            Clear
+                        </button>
+
+                    </div>
+
+                </form>
+
+
+                <div class="notice">
+                    ⚠️ Current version is a frontend admin interface.
+                    Products are not yet connected to a permanent database.
+                    Database and authentication will be added in the next
+                    development stage.
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <script>
+
+        const productForm =
+            document.getElementById("productForm");
+
+        productForm.addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            alert(
+                "Product form submitted! Database connection will be added in the next stage."
+            );
+
+        });
+
+    </script>
+
+</body>
+</html>
