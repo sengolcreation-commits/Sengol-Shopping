@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Sengol — Discover, Explore, Shop Smarter.">
+<title>Sengol — Ecosystem</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="welcome" class="welcome">
+  <div class="welcome-box">
+    <div class="mark">S</div>
+    <p class="label">EST. 2026</p>
+    <h1>Welcome to <span>Sengol</span></h1>
+    <p>Discover • Explore • Shop Smarter</p>
+    <button id="enter" class="btn gold">Enter Sengol</button>
+  </div>
+</div>
+
+<header class="header">
+  <div class="container nav">
+    <a class="brand" href="#home">
+      <img src="Logo.png" alt="Sengol logo" onerror="this.style.display='none'">
+      <b>SENGOL</b><small>ECOSYSTEM</small>
+    </a>
+    <nav id="nav">
+      <a href="#home">Home</a>
+      <a href="#shopping">Shopping</a>
+      <a href="#categories">Categories</a>
+      <a href="#products">Products</a>
+      <a href="#sell">Sell</a>
+      <a href="#affiliate">Affiliate</a>
+      <a href="#vision">Vision</a>
+    </nav>
+    <button id="menu" class="menu">☰</button>
+  </div>
+</header>
+
+<main id="home">
+
+<section class="hero">
+<div class="container hero-grid">
+<div>
+<p class="label gold-text">THE SENGOL ECOSYSTEM</p>
+<h1>One brand.<br><span>Many possibilities.</span></h1>
+<p class="lead">Sengol is being built as a digital ecosystem where people can discover products, compare shopping routes, support brands and eventually access everyday services through one trusted platform.</p>
+<div class="buttons">
+<a class="btn gold" href="#shopping">Start Exploring</a>
+<a class="btn outline" href="#vision">Our Vision</a>
+</div>
+</div>
+<div class="hero-card">
+<div class="orb">S</div>
+<p>SHOPPING</p><p>DISCOVERY</p><p>AFFILIATE</p><p>FUTURE SERVICES</p>
+</div>
+</div>
+</section>
+
+<section class="section" id="shopping">
+<div class="container">
+<p class="label">SHOPPING HUB</p>
+<h2>Everything starts with smarter discovery.</h2>
+<p class="sub">Sengol connects users to participating marketplaces and official stores. Purchases are completed on the relevant marketplace unless Sengol explicitly provides direct checkout.</p>
+<div class="platforms" id="platforms"></div>
+</div>
+</section>
+
+<section class="section dark" id="categories">
+<div class="container">
+<p class="label gold-text">SENGOL CATEGORIES</p>
+<h2>Explore the ecosystem.</h2>
+<div class="category-grid">
+<a href="#products"><strong>01</strong><h3>Sengol Fashion</h3><p>Fashion discovery and shopping routes.</p></a>
+<a href="#products"><strong>02</strong><h3>Sengol Electronics</h3><p>Discover useful technology and electronics.</p></a>
+<a href="#products"><strong>03</strong><h3>Sengol Home Décor</h3><p>Ideas and products for better spaces.</p></a>
+<a href="#products"><strong>04</strong><h3>Sengol Other</h3><p>More products and opportunities across categories.</p></a>
+</div>
+</div>
+</section>
+
+<section class="section light" id="products">
+<div class="container">
+<p class="label">DISCOVER</p>
+<h2>Featured products</h2>
+<p class="sub">Products added through the Sengol system appear here.</p>
+<div class="tools"><input id="search" placeholder="Search products..."><select id="filter"><option value="all">All categories</option><option>Fashion</option><option>Electronics</option><option>Home Decor</option><option>Other</option></select></div>
+<div id="productsGrid" class="products"></div>
+<div id="empty" class="empty">No products added yet.</div>
+</div>
+</section>
+
+<section class="section" id="sell">
+<div class="container split">
+<div><p class="label">SELL / SUBMIT</p><h2>Bring a product to Sengol.</h2><p class="sub">Sellers and brands can submit products for review. Approved products can be presented through the Sengol discovery system.</p></div>
+<form class="card" id="sellForm">
+<input required placeholder="Your name"><input required placeholder="Email or phone"><input required placeholder="Product name"><input type="url" placeholder="Product URL"><textarea placeholder="Tell us about the product"></textarea>
+<button class="btn gold">Submit for Review</button>
+</form>
+</div>
+</section>
+
+<section class="section light" id="affiliate">
+<div class="container split">
+<div><p class="label">AFFILIATE CENTER</p><h2>Affiliate-powered discovery.</h2><p class="sub">Sengol can connect supported affiliate routes to product discovery. Only authorized affiliate links should be used.</p><div class="notice">Affiliate parameters must come from the relevant official affiliate program.</div></div>
+<div class="card"><input id="affiliateUrl" type="url" placeholder="Paste an authorized affiliate URL"><button id="prepare" class="btn gold">Prepare Link</button><div id="affiliateResult"></div></div>
+</div>
+</section>
+
+<section class="section dark" id="vision">
+<div class="container">
+<p class="label gold-text">LONG-TERM VISION</p>
+<h2>From shopping website to a wider Sengol ecosystem.</h2>
+<div class="vision-grid">
+<div><b>01</b><h3>Shopping</h3><p>Build a trusted product-discovery and affiliate platform.</p></div>
+<div><b>02</b><h3>Brands & Sellers</h3><p>Create opportunities for products and sellers.</p></div>
+<div><b>03</b><h3>Services</h3><p>Gradually bring useful everyday services into the ecosystem.</p></div>
+<div><b>04</b><h3>One Ecosystem</h3><p>Make Sengol a recognizable destination for everyday needs.</p></div>
+</div>
+</div>
+</section>
+
+<section class="section center">
+<div class="container"><p class="label">COMMUNITY</p><h2>Follow Sengol</h2><div id="socials" class="socials"></div></div>
+</section>
+
+</main>
+
+<footer>
+<div class="container footer-grid">
+<div><h3>SENGOL</h3><p>Discover • Explore • Shop Smarter.</p><small>© 2026 Sengol Affiliate Marketing.</small></div>
+<div><h4>Legal</h4><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms & Conditions</a><a href="affiliate-disclosure.html">Affiliate Disclosure</a></div>
+<div><h4>Contact</h4><a href="mailto:sengolcreation@gmail.com">Email</a><a href="https://wa.me/916307703135" target="_blank">WhatsApp</a></div>
+</div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
